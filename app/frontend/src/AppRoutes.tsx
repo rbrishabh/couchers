@@ -1,6 +1,7 @@
 import PageTitle from "components/PageTitle";
 import TextBody from "components/TextBody";
 import EditCommunityInfoPage from "features/communities/EditCommunityInfoPage";
+import { CreateEventPage } from "features/communities/events";
 import Contribute from "features/Contribute";
 import EditProfilePage from "features/profile/edit/EditProfilePage";
 import UserPage from "features/profile/view/UserPage";
@@ -49,6 +50,7 @@ import {
   loginRoute,
   logoutRoute,
   messagesRoute,
+  newEventRoute,
   newGuideRoute,
   newPlaceRoute,
   placeRoute,
@@ -172,6 +174,11 @@ export default function AppRoutes() {
         <PageTitle>Events</PageTitle>
         <TextBody>Events are coming soon!</TextBody>
       </AppRoute>
+      {process.env.REACT_APP_IS_EVENTS_ENABLED ? (
+        <AppRoute isPrivate path={newEventRoute}>
+          <CreateEventPage />
+        </AppRoute>
+      ) : null}
 
       {
         // SEARCH
